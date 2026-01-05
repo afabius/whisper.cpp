@@ -39,7 +39,7 @@ if (WHISPER_SDL2)
 
     if(WIN32)
         # It requires Windows 8.1 or later for PrefetchVirtualMemory
-        target_compile_definitions(${TARGET} PRIVATE -D_WIN32_WINNT=0x0602)
+        target_compile_definitions(${TARGET} PRIVATE -D_WIN32_WINNT=0x0601)
     endif()
 
     include(DefaultTargetOptions)

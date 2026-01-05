@@ -2472,6 +2472,12 @@ static bool ggml_thread_apply_priority(int32_t prio) {
         case GGML_SCHED_PRIO_REALTIME: p = THREAD_PRIORITY_TIME_CRITICAL; break;
     }
 
+#if _WIN32_WINNT >= 0x0A00
+    #error "_WIN32_WINNT >= 0x0A00"
+#elif _WIN32_WINNT >= 0x0602
+    #error "_WIN32_WINNT >= 0x0602"
+#endif
+
     if (prio != GGML_SCHED_PRIO_LOW) {
         // Tell Windows that this thread should not be throttled (needs its own CPU core).
         // Newer Windows 11 versions aggresively park (offline) CPU cores and often place
